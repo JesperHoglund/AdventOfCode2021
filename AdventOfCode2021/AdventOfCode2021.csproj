@@ -6,9 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="1\Input.txt">
+    <None Remove="1\Input.txt" />
+    <None Remove="2\Input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="1\Input.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2\Input.txt" />
   </ItemGroup>
 
 </Project>

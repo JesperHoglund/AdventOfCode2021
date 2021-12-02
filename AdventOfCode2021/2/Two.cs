@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 
 namespace AdventOfCode2021._2
 {
-    class Two
+    class Two : IDay
     {
+        public string filepath { get; set; }
+
+        public Two(string filepath) 
+        {
+            this.filepath = filepath;
+        }
+
         public string SolvePart1()
         {
-            string[] actions = System.IO.File.ReadAllLines(@"C:\Users\Jesper\source\repos\AdventOfCode2021\AdventOfCode2021\2\Input.txt");
+            string[] actions = File.ReadAllLines(filepath);
             int depth = 0;
             int horizontal = 0;
 
@@ -33,7 +42,7 @@ namespace AdventOfCode2021._2
         }
         public string SolvePart2()
         {
-            string[] actions = System.IO.File.ReadAllLines(@"C:\Users\Jesper\source\repos\AdventOfCode2021\AdventOfCode2021\2\Input.txt");
+            string[] actions = File.ReadAllLines(filepath);
             int depth = 0;
             int horizontal = 0;
             int aim = 0;
