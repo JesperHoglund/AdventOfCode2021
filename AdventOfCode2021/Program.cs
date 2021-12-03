@@ -8,9 +8,9 @@ namespace AdventOfCode2021
         static void Main(string[] args)
         {
             List<object> days = new List<object>();
-            days.Add(new _1.One(@"C:\Users\Jesper\source\repos\AdventOfCode2021\AdventOfCode2021\1\Input.txt"));
-            days.Add(new _2.Two(@"C:\Users\Jesper\source\repos\AdventOfCode2021\AdventOfCode2021\2\Input.txt"));
-
+            days.Add(new One());
+            days.Add(new Two());
+            days.Add(new Three());
 
             foreach (IDay day in days) 
             {
@@ -22,3 +22,4 @@ namespace AdventOfCode2021
         }
     }
 }
+

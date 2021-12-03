@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace AdventOfCode2021._1
+namespace AdventOfCode2021
 {
     class One : IDay
     {
         public string filepath { get; set; }
 
-        public One(string filepath) 
+        public One() 
         {
-            this.filepath = filepath;
+            this.filepath = @"Inputs\"+this.GetType().Name + ".txt";
         }
 
         public string SolvePart1()

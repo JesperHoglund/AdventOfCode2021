@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 
-namespace AdventOfCode2021._2
+namespace AdventOfCode2021
 {
     class Two : IDay
     {
         public string filepath { get; set; }
 
-        public Two(string filepath) 
+        public Two() 
         {
-            this.filepath = filepath;
+            this.filepath = @"Inputs\" + this.GetType().Name + ".txt";
         }
 
         public string SolvePart1()
