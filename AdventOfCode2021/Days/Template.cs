@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace AdventOfCode2021
 {
-    class Template : IDay
+    public class Template : IDay
     {
         public string filepath { get; set; }
         public Template() 
@@ -30,6 +30,16 @@ namespace AdventOfCode2021
 
 
             return "";
+        }
+
+        public string SolvePart1v2()
+        {
+            return "Not implemented";
+        }
+
+        public string SolvePart2v2()
+        {
+            return "Not implemented";
         }
     }
 }

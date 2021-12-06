@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace AdventOfCode2021
 {
-    class Four : IDay
+    public class Four : IDay
     {
         public string filepath { get; set; }
         public Four() 
@@ -155,6 +155,16 @@ namespace AdventOfCode2021
                 }
             }
             return "FAILED!";
+        }
+
+        public string SolvePart1v2()
+        {
+            return "Not implemented";
+        }
+
+        public string SolvePart2v2()
+        {
+            return "Not implemented";
         }
     }
 }

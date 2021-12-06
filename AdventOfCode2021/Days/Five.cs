@@ -5,23 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+using System.Drawing;
+
 
 namespace AdventOfCode2021
 {
-    class Five : IDay
+    public class Five : IDay
     {
         public string filepath { get; set; }
         private int[][] cords = new int[1000][];
-        List<KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>> diagonal = new List<KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>>();
+        Dictionary<string, int> cords2;
         public Five() 
         {
-            this.filepath = @"Inputs\" + this.GetType().Name + ".txt";
+            this.filepath = @"Inputs\Test" + this.GetType().Name + ".txt";
         }
-
+        
         public string SolvePart1()
         {
             string[] lines = File.ReadAllLines(filepath);
-            
             for (int i = 0; i < cords.Length; i++)
             {
                 cords[i] = new int[1000];
@@ -66,7 +67,7 @@ namespace AdventOfCode2021
                     setPointsVertical(keyValuePair.Key, keyValuePair.Value);
                 else if (keyValuePair.Key.Value == keyValuePair.Value.Value)
                     setPointsHorizontal(keyValuePair.Key, keyValuePair.Value);
-                else //if (Math.Abs(keyValuePair.Key.Key -keyValuePair.Value.Key) == Math.Abs(keyValuePair.Key.Value - keyValuePair.Value.Value))
+                else if (Math.Abs(keyValuePair.Key.Key -keyValuePair.Value.Key) == Math.Abs(keyValuePair.Key.Value - keyValuePair.Value.Value))
                     setPointsDiagonal(keyValuePair.Key, keyValuePair.Value);
             }
             int overlaps = 0;
@@ -122,7 +123,6 @@ namespace AdventOfCode2021
             r_row = rightKvp.Value;
             l_col = leftKvp.Key;
             r_col = rightKvp.Key;
-            diagonal.Add(new KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>(leftKvp, rightKvp));
             if (l_row < r_row) //Go down
             {
                 if (l_col < r_col)//go right
@@ -169,5 +169,68 @@ namespace AdventOfCode2021
 
         }
 
+        public string SolvePart1v2()
+        {
+            string[] lines = File.ReadAllLines(filepath);
+            cords2 = new Dictionary<string, int>();
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    cords2.Add(i + "," + j, 0);
+            List<KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>> keyValuePairs = new List<KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>>();
+            foreach (string line in lines)
+            {
+                GetLine(int.Parse(line.Split(",")[0]), int.Parse(line.Split(" -> ")[0].Split(",")[1]), int.Parse(line.Split(" -> ")[1].Split(",")[0]), int.Parse(line.Split(" -> ")[1].Split(",")[1]),false);
+            }
+            return cords2.Select(s => s).Where(s => s.Value > 1).Count().ToString();
+        }
+
+        public string SolvePart2v2()
+        {
+            string[] lines = File.ReadAllLines(filepath);
+            cords2 = new Dictionary<string, int>();
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    cords2.Add(i + "," + j, 0);
+            List<KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>> keyValuePairs = new List<KeyValuePair<KeyValuePair<int, int>, KeyValuePair<int, int>>>();
+            foreach (string line in lines)
+            {
+                GetLine(int.Parse(line.Split(",")[0]), int.Parse(line.Split(" -> ")[0].Split(",")[1]), int.Parse(line.Split(" -> ")[1].Split(",")[0]), int.Parse(line.Split(" -> ")[1].Split(",")[1]), true);
+            }
+            return "Not implemented!";
+        }
+
+        public void GetLine(int X1, int Y1, int X2, int Y2,bool incDiagonal) 
+        {
+            List<string> Line = new List<string>();
+            if (X1 == X2)
+                for (int i = (Y1 < Y2 ? Y1 : Y2); i <= (Y1 > Y2 ? Y1 : Y2); i++)
+                    cords2[X1 + "," + i]++;
+            else if (Y1 == Y2)
+                for (int i = (X1 < X2 ? X1 : X2); i <= (X1 > X2 ? X1 : X2); i++)
+                    cords2[i + "," + Y1]++;
+            else if (incDiagonal)
+            {
+                int X = int.Parse(X1 + "" + Y1);
+                int Y = int.Parse(X2 + "" + Y2);
+                var s = Math.Abs(X1 - X2);
+                var d = Math.Abs(Y1 - Y2);
+                for (int i = (X < Y ? X : Y);i<= (X > Y ? X : Y); i +=11)
+                    cords2[i.ToString("00")[0]+","+ i.ToString("00")[1]]++;
+                //int points = Math.Abs(int.Parse(X1 + "" + Y1)- int.Parse(X2 + "" + Y2))/9;
+                //if (int.Parse(string.Concat(X1, Y1)) < int.Parse(string.Concat(X2, Y2)))
+                //    X1 = 1;
+                //else if (int.Parse(string.Concat(X1,Y1)) > int.Parse(string.Concat(X2,Y2)))
+                //    for(int i = 1;i<=points;i++)
+                //        cords2[]++;
+
+                    //for (int i = 1; i <= points; i++)
+                    //{ 
+                    //    cords2[(i*9)+","]++;
+                    //}
+            }
+                //X1 = 8, Y1 = 0
+                //X2 = 0, Y2 = 8
+
+        }
     }
 }

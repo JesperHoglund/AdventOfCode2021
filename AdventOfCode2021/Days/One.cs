@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AdventOfCode2021
 {
-    class One : IDay
+    public class One : IDay
     {
         public string filepath { get; set; }
 

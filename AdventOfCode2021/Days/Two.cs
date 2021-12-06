@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace AdventOfCode2021
 {
-    class Two : IDay
+    public class Two : IDay
     {
         public string filepath { get; set; }
 
@@ -64,6 +64,16 @@ namespace AdventOfCode2021
                 }
             }
             return (horizontal * depth).ToString();
+        }
+
+        public string SolvePart1v2()
+        {
+            return "Not implemented";
+        }
+
+        public string SolvePart2v2()
+        {
+            return "Not implemented";
         }
     }
 }

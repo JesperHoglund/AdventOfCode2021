@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace AdventOfCode2021
 {
-    class Three : IDay
+    public class Three : IDay
     {
         public string filepath { get; set; }
         public Three() 
@@ -63,6 +63,16 @@ namespace AdventOfCode2021
                 }
             }
             return (Convert.ToInt32(oxygen, 2) * Convert.ToInt32(scrubber, 2)).ToString();
+        }
+
+        public string SolvePart1v2()
+        {
+            return "Not implemented";
+        }
+
+        public string SolvePart2v2()
+        {
+            return "Not implemented";
         }
     }
 }

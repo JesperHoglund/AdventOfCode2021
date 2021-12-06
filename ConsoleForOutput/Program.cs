@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using AdventOfCode2021;
 
-namespace AdventOfCode2021
+namespace ConsoleForOutput
 {
     class Program
     {
@@ -13,18 +14,14 @@ namespace AdventOfCode2021
             days.Add(new Three());
             days.Add(new Four());
             days.Add(new Five());
-            days.Add(new Six());
 
-            foreach (IDay day in days) 
+            foreach (IDay day in days)
             {
-                Console.WriteLine("---------------Day "+day.GetType().Name+"--------------");
+                Console.WriteLine("---------------Day " + day.GetType().Name + "--------------");
                 Console.WriteLine("Part One: " + day.SolvePart1());
-                Console.WriteLine("Part One v2: " + day.SolvePart1v2());
                 Console.WriteLine("Part Two: " + day.SolvePart2());
-                Console.WriteLine("Part Two v2: " + day.SolvePart2v2());
                 Console.WriteLine();
             }
         }
     }
 }
-
