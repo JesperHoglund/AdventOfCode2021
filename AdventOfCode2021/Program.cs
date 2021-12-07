@@ -14,6 +14,7 @@ namespace AdventOfCode2021
             days.Add(new Four());
             days.Add(new Five());
             days.Add(new Six());
+            days.Add(new Seven());
 
             foreach (IDay day in days) 
             {
